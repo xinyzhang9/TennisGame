@@ -10,18 +10,31 @@ class TennisGame {
     getScore() {
         let res;
         if(this.score1 === this.score2) {
-            if(this.score1 < 4) {
+            if(this.score1 < 3) {
                 res = this.scoreMap[this.score1] + ' ' + 'all';
                 return formatScore(res);
+            } else {
+                return "Deuce";
             }
         } else {
             if(this.score1 < 4 && this.score2 < 4) {
                 res = this.scoreMap[this.score1] + ' ' + this.scoreMap[this.score2];
                 return formatScore(res);
+            } else {
+                if(this.score1 - this.score2 === 1) {
+                    return "Advantage " + this.player1;
+                }
+                if(this.score2 - this.score1 === 1) {
+                    return "Advantage " + this.player2;
+                }
+            }
+            if(this.score1 - this.score2 > 1) {
+                return this.player1 + ' '+'wins';
+            }
+            if(this.score2 - this.score1 > 1) {
+                return this.player2 + ' ' + 'wins';
             }
         }
-        
-        
     }
 
     player1Score() {
